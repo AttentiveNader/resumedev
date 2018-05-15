@@ -1,0 +1,14 @@
+{
+	"comment": "",
+	"goVersion": "1.10.1",
+	"ignore": "test",
+	"package": [
+		{
+			"checksumSHA1": "92dUWJPlL97eTKBNibbY8vPVxWY=",
+			"path": "github.com/rs/cors",
+			"revision": "12972ae4e7775151d0d53aaad277be85133ce445",
+			"revisionTime": "2018-04-17T22:52:04Z"
+		}
+	],
+	"rootPath": "email-sender"
+}
