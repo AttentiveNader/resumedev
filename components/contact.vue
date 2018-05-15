@@ -1,6 +1,6 @@
 <template>
     <div id="top-panel">
-      <div id="pull-down-btn" href="#" @click="pullDown()" class="pull-btn pull-down-btn"><span> </span> 
+      <div id="pull-down-btn" href="#" @click="pullDown()" class="pull-btn pull-down-btn"><fa icon="angle-up" />
       </div>
      
       <form v-on:submit.prevent="sendMessage()" class="contact-form">
@@ -13,26 +13,31 @@
     	  </div>
     	  <div>
     	    <label for="con-email">Email</label>
-    	    <input type="email" name="con-email" id="con-email" v-model="contactForm.email"/>
+    	    <input type="email" name="con-email" id="con-email" v-model="contactForm.address"/>
     	  </div>
     	  <textarea placeholder="Your Message" v-model="contactForm.message"></textarea>
-        <p id="message">{{message}}</p>
+        <div id="response">
+          <p>{{message}}</p>
+        </div>
     	  <button  @click="sendMessage()" class="send-btn">Send</button>
     		  <p>My Email address is nader_atef80@outlook.com</p>
       </form>
     </div>  
 </template>
 <script>
+  import axios from "axios"
   export default { 
     data(){
       return {
         pulledStatus: false,
         topPanel: null,
         container : null,
+        Loading : null,
+        response : null,
         contactForm: {
-          name: "",
-          email: "",
-          message: ""
+          "name": "",
+          "address": "",
+          "message": ""
         },
         message: ""
       }
@@ -43,25 +48,49 @@
         if (!self.pulledStatus){
           self.topPanel.classList.add("expanded")
           self.container.style.display = "block"
+          self.container.style.opacity = "1"
           self.pulledStatus = !self.pulledStatus
           return
         }
         self.pulledStatus = !self.pulledStatus
         self.container.style.display = "none"
+        self.container.style.opacity = "0"
         self.topPanel.classList.remove("expanded") 
       },
       sendMessage(){
+        let self  =  this
+        if (this.contactForm.message.length < 1 || this.contactForm.address.length < 1 || this.contactForm.name.length < 1) {      
+          this.message = "please fill all  fields"
+          response.classList.add("red-resp")
+          return
+        }
+        self.Loading.style.display = "block"
+        axios.post("https://na-resume-api.herokuapp.com/send",this.contactForm)
+        .then(function(response){
+          self.message = response.data.message
+          console.log(response)
+        self.Loading.style.display = "none"
+        self.response.style.display = "block"
 
+        })
+        .catch(err => {
+          self.message = err
+          console.log(err)
+        self.Loading.style.display = "none"
+
+        })
       }
     },
     mounted(){
     	 this.topPanel = document.getElementById('top-panel')
        this.container = document.getElementById("container")
+       this.Loading = document.getElementById("loading")
+       this.response = document.getElementById("response")
     }
   }
 </script>
 <style type="text/css" scoped>
-   #top-panel{
+#top-panel{
     position: fixed;
     top: -100%;
     width: 100%;
@@ -71,24 +100,39 @@
     -webkit-transition: 0.5s; 
     -o-transition: 0.5s; 
     transition: 0.5s;
-    background:#00daff;
+    background:#c53f55;
   }
-
+  #response{
+    display: none;
+    background: lightblue;
+    opacity : 0.7;
+    text-align: center !important;
+    color:black;
+    border-radius: 12px;
+    padding-top: 5px;
+  }
+  .red-resp{
+    background: red;
+    display: block !important;
+  }
+  .light-resp {
+    background:lightblue;
+    display: block !important; 
+  }
   @media screen and (min-width: 1000px){
-  	#top-panel{
-  		position: fixed;
- 	  	top: -100%;
- 	  	left:10%;
-	    width: 100%;
-	    border-bottom-left-radius: 20px ; 
-	    border-bottom-right-radius: 20px ; 
-	    max-width: 80%;
-	    height: 100%; 
-	    -webkit-transition: 0.5s; 
-	    -o-transition: 0.5s; 
-	    transition: 0.5s;
-	    background:#00daf3;
-  	}
+    #top-panel{
+      position: fixed;
+      top: -100%;
+      left:10%;
+      border-bottom-left-radius: 20px ; 
+      border-bottom-right-radius: 20px ; 
+      max-width: 80%;
+      height: 100%; 
+      -webkit-transition: 0.5s; 
+      -o-transition: 0.5s; 
+      transition: 0.5s;
+      background:#c53f55;
+    }
   }
    @media screen and (max-height: 600px){
     .contact-form {
@@ -97,22 +141,23 @@
    }
   .pull-down-btn{
     margin:0 auto;
-    width: 60px;
-    height: 60px;
-    border-radius: 50% ;
     position: absolute;
-    bottom:-30px;
-    transform:rotate(90deg);
-    left:calc(50% - 30px);
-    background: #2c3e50 ;
-    transition: 0.5s ;
-  }
-  .pull-down-btn:hover{
-        box-shadow: 0 0 6px black,0 0  6px black ,0 0  6px black ,0 0  6px black ;
+    bottom:-20px;
+    -webkit-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -moz-transform: rotate(180deg); 
+            transform:rotate(180deg);
+    left:calc(50% - 20px);
   }
 
-  .pull-down-btn:active{
-    box-shadow: 0 0 6px black,0 0  6px black ,0 0  6px black ,0 0  6px black ;
+ 
+  .expanded .pull-down-btn{
+    transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -moz-transform: rotate(360deg); 
   }
   .expanded{
     top:0 !important;
@@ -140,14 +185,14 @@
     padding-top: 5px;
   }
   .send-btn{
-  	width: 100%;
-  	margin-bottom: 10px;
+    width: 100%;
+    margin-bottom: 10px;
   }
   textarea{
-  	width: 100%;
-  	height:100px;
-  	resize: none;
-  	margin-bottom: 10px;
+    width: 100%;
+    height:100px;
+    resize: none;
+    margin-bottom: 10px;
   }
   input[type=text],input[type=email], textarea{
     font-size: 16px;
@@ -156,7 +201,8 @@
     border:2px solid #ccc;
   }
   input:focus,textarea:focus{
-  	border:2px solid #d3d3d3 ;
-  	box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+    border:2px solid #d3d3d3 ;
+    -webkit-box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+            box-shadow: 0 0 5px rgba(81, 203, 238, 1);
   }
 </style>
