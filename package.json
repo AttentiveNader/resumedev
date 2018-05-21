@@ -17,9 +17,7 @@
     "@fortawesome/vue-fontawesome": "0.0.22",
     "axios": "^0.18.0",
     "nuxt": "^1.3.0",
-    "nuxt-fontawesome": "^0.1.3",
-    "promisify-node": "^0.4.0",
-    "vue-resource": "^1.5.0"
+    "nuxt-fontawesome": "^0.1.3"
   },
   "devDependencies": {
     "ajv": "^6.2.1",
@@ -27,9 +25,6 @@
     "eslint": "^4.15.0",
     "eslint-friendly-formatter": "^3.0.0",
     "eslint-loader": "^1.7.1",
-    "eslint-plugin-vue": "^4.0.0",
-    "node-sass": "^4.7.2",
-    "peer": "^0.2.8",
-    "sass-loader": "^6.0.7"
+    "eslint-plugin-vue": "^4.0.0"
   }
 }

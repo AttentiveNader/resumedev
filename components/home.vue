@@ -83,7 +83,6 @@ export default {
 	 	.skills-cont{
 	 		width: 100%;
 	 		max-width: none;
-
 	 	}
 	 }
 	.skills-cont div{

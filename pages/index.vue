@@ -32,6 +32,7 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+  font-size: larger
 }
 p{
   padding :2px ;
@@ -78,7 +79,9 @@ a{
     -o-transition: 0.5s ;
     transition: 0.5s ;
     text-align: center;
+    
   }
+ 
   #loading{
   display:none; 
   position: fixed;

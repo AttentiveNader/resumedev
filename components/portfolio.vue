@@ -87,10 +87,62 @@
 	position: absolute;
 	top: calc(50% - 20px);
 	right:-20px;
-	-webkit-transform:rotate(90deg);
-        -ms-transform:rotate(90deg);
-            transform:rotate(90deg);
+	-webkit-animation :2s scaleright infinite ease-in-out ;
+	animation :2s scaleright infinite ease-in-out ;
 }
+@keyframes scaleright{
+    0% {
+       -webkit-transform: rotate(90deg) scale(1)  ;
+    -o-transform: rotate(90deg) scale(1) ;
+    -ms-transform: rotate(90deg) scale(1) ;
+    -moz-transform: rotate(90deg) scale(1) ; 
+            transform:rotate(90deg) scale(1) ;
+    }
+    50%{
+
+       -webkit-transform: rotate(90deg) scale(1.6) ;
+    -o-transform: rotate(90deg) scale(1.6);
+    -ms-transform: rotate(90deg) scale(1.6);
+    -moz-transform: rotate(90deg) scale(1.6); 
+            transform:rotate(90deg) scale(1.6);
+    }
+    100% {
+       -webkit-transform: rotate(90deg) scale(1) ;
+    -o-transform: rotate(90deg) scale(1) ;
+    -ms-transform: rotate(90deg) scale(1) ;
+    -moz-transform: rotate(90deg) scale(1) ; 
+            transform:rotate(90deg) scale(1);
+    }
+  }
+  @keyframes scaleleft{
+    0% {
+       -webkit-transform: rotate(270deg) scale(1)  ;
+    -o-transform: rotate(270deg) scale(1) ;
+    -ms-transform: rotate(270deg) scale(1) ;
+    -moz-transform: rotate(270deg) scale(1) ; 
+            transform:rotate(270deg) scale(1) ;
+    }
+    50%{
+
+       -webkit-transform: rotate(270deg) scale(1.6) ;
+    -o-transform: rotate(270deg) scale(1.6);
+    -ms-transform: rotate(270deg) scale(1.6);
+    -moz-transform: rotate(270deg) scale(1.6); 
+            transform:rotate(270deg) scale(1.6);
+    }
+    100% {
+       -webkit-transform: rotate(270deg) scale(1)  ;
+    -o-transform: rotate(270deg) scale(1) ;
+    -ms-transform: rotate(270deg) scale(1) ;
+    -moz-transform: rotate(270deg) scale(1) ; 
+            transform:rotate(270deg) scale(1);
+    }
+  }
+ 
+  .expanded .pull-right-btn{
+    -webkit-animation: 2s scaleleft infinite ease-in-out !important ;
+         animation: 2s scaleleft infinite ease-in-out !important ;
+  }
 .icon{
 	max-width: 60px !important;
 	margin-right: 10px;
@@ -99,11 +151,6 @@
 	position: fixed;
 	left:0 !important;
     background:#00daff73;
-}
-.expanded .pull-right-btn{
-	-webkit-transform:rotate(270deg);
-        -ms-transform:rotate(270deg);
-            transform:rotate(270deg);
 }
 .wrapper .box  div{
 	display: table-cell;

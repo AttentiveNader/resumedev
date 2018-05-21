@@ -1,6 +1,6 @@
 <template>
     <div id="top-panel">
-      <div id="pull-down-btn" href="#" @click="pullDown()" class="pull-btn pull-down-btn"><fa icon="angle-up" />
+      <div id="pull-down-btn" href="#" @click="pullDown()" class="pull-btn pull-down-btn rotate"><fa icon="angle-up" />
       </div>
      
       <form v-on:submit.prevent="sendMessage()" class="contact-form">
@@ -69,15 +69,14 @@
         .then(function(response){
           self.message = response.data.message
           console.log(response)
-        self.Loading.style.display = "none"
-        self.response.style.display = "block"
+          self.Loading.style.display = "none"
+          self.response.style.display = "block"
 
         })
         .catch(err => {
           self.message = err
           console.log(err)
-        self.Loading.style.display = "none"
-
+          self.Loading.style.display = "none"
         })
       }
     },
@@ -139,25 +138,68 @@
       margin-top: 4% !important;
     }
    }
+ 
   .pull-down-btn{
     margin:0 auto;
+    transition: 0.4s;
     position: absolute;
     bottom:-20px;
-    -webkit-transform: rotate(180deg);
-    -o-transform: rotate(180deg);
-    -ms-transform: rotate(180deg);
-    -moz-transform: rotate(180deg); 
-            transform:rotate(180deg);
     left:calc(50% - 20px);
+    -webkit-animation: 2s scaledown infinite ease-in-out ;
+         animation: 2s scaledown infinite ease-in-out ;
   }
+ @keyframes scaledown{
+    0% {
+       -webkit-transform: rotate(180deg) scale(1)  ;
+    -o-transform: rotate(180deg) scale(1) ;
+    -ms-transform: rotate(180deg) scale(1) ;
+    -moz-transform: rotate(180deg) scale(1) ; 
+            transform:rotate(180deg) scale(1) ;
+    }
+    50%{
 
+       -webkit-transform: rotate(180deg) scale(1.6) ;
+    -o-transform: rotate(180deg) scale(1.6);
+    -ms-transform: rotate(180deg) scale(1.6);
+    -moz-transform: rotate(180deg) scale(1.6); 
+            transform:rotate(180deg) scale(1.6);
+    }
+    100% {
+       -webkit-transform: rotate(180deg)  ;
+    -o-transform: rotate(180deg) ;
+    -ms-transform: rotate(180deg) ;
+    -moz-transform: rotate(180deg) ; 
+            transform:rotate(180deg) scale(1);
+    }
+  }
+  @keyframes scaleup{
+    0% {
+       -webkit-transform: rotate(0deg) scale(1)  ;
+    -o-transform: rotate(0deg) scale(1) ;
+    -ms-transform: rotate(0deg) scale(1) ;
+    -moz-transform: rotate(0deg) scale(1) ; 
+            transform:rotate(0deg) scale(1) ;
+    }
+    50%{
+
+       -webkit-transform: rotate(0deg) scale(1.6) ;
+    -o-transform: rotate(0deg) scale(1.6);
+    -ms-transform: rotate(0deg) scale(1.6);
+    -moz-transform: rotate(0deg) scale(1.6); 
+            transform:rotate(0deg) scale(1.6);
+    }
+    100% {
+       -webkit-transform: rotate(0deg)  ;
+    -o-transform: rotate(0deg) ;
+    -ms-transform: rotate(0deg) ;
+    -moz-transform: rotate(0deg) ; 
+            transform:rotate(0deg) scale(1);
+    }
+  }
  
   .expanded .pull-down-btn{
-    transform: rotate(360deg);
-    -webkit-transform: rotate(360deg);
-    -o-transform: rotate(360deg);
-    -ms-transform: rotate(360deg);
-    -moz-transform: rotate(360deg); 
+    -webkit-animation: 2s scaleup infinite ease-in-out !important ;
+         animation: 2s scaleup infinite ease-in-out !important ;
   }
   .expanded{
     top:0 !important;
