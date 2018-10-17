@@ -4,34 +4,42 @@
      	</div>
 		<div class="wrapper">
 			<div class="box"> 
-				<div>
-					<p>worked on the front end of two related site with another main web developer(it was his idea)</p>
-					<p><a target="_new" href="http://advancedentity.com">Advanced Entity</a></p>
-					<p><a target="_new" href="http://riftgen.com">Riftgen</a></p>
+			   <div class="table">
+          <div class="table-cell">
+  					<p>worked on the front end of two connected websites with another main web developer(it was his idea) and I built alot of the design, doing so I had to deal with bootstrap/mdbootstrap and of course HTML/CSS & javascript </p>
+  					<p><a target="_new" href="http://advancedentity.com">Advanced Entity</a></p>
+  					<p><a target="_new" href="http://riftgen.com">Riftgen</a></p>
+          </div>
 				</div>
 			</div>
 			<div class="box">
-				<div>
-					<p>built a url shortener with golang and mysql</p>
-					<a target="_new" href="http://gosho.herokuapp.com"><img src="~/static/scaledlogo.png"></a>
+				<div class="table">
+          <div class="table-cell">
+  					<p>built a url shortener with golang and mysql</p>
+  					<a target="_new" href="http://gosho.herokuapp.com"><img src="~/static/scaledlogo.png"></a>
+          </div>
 				</div>
 			</div>
 			<div class="box">
-				<div>
-					<p><a target="_new" href="http://freecodecamp.org/naderjs">FCC profile</a></p>
-					<p>finished the freecodecamp front end program and made some small projects for it, these are 2 of them</p>
-					<p><a target="_new" href="https://naderjs.lib.id/ticvue@dev/#/">Tic tac toe</a></p>
-					<p><a target="_new" href="https://lifegamecon.herokuapp.com/">Game of life</a></p>
+        <div class="table">
+  				<div class="table-cell">
+  					<p><a target="_new" href="http://freecodecamp.org/naderjs">FCC profile</a></p>
+  					<p>finished the freecodecamp front end program and made some small projects for it, and this tic tac toe is one of them I developed it to be undefeatable</p>
+  					<p><a target="_new" href="https://naderjs.lib.id/ticvue@dev/#/">Tic tac toe</a></p>
+  					<!--<p><a target="_new" href="https://lifegamecon.herokuapp.com/">Game of life</a></p>-->
+          </div>
 				</div>
 			</div>
 			<div class="box">
-				<div>
-					<p>you can find more about me on</p>
-					<p><a target="_new" href="https://drive.google.com/open?id=12_6Wo3znBqPQYRYAa1tpB1a5Pq8pm8IT">My Resume PDF</a></p>
-					<p>or</p>
-					<a  target="_new" href="https://github.com/NaderJS"><img class="icon" src="~/static/github.png"/></a>
-					<a  target="_new" href="https://www.linkedin.com/in/nader-atef-6806b2139/"><img class="icon" src="~/static/linkedin.png"/></a>
-					<a  target="_new" href="https://www.facebook.com/profile.php?id=100008930282377"><img class="icon" src="~/static/facebook.png"/></a>
+				<div class="table">
+          <div class="table-cell">
+  					<p>you can find more about me on</p>
+  					<p><a target="_new" href="https://drive.google.com/open?id=12_6Wo3znBqPQYRYAa1tpB1a5Pq8pm8IT">My Resume PDF</a></p>
+  					<p>or</p>
+  					<a  target="_new" href="https://github.com/NaderJS"><img class="icon" src="~/static/github.png"/></a>
+  					<a  target="_new" href="https://www.linkedin.com/in/nader-atef-6806b2139/"><img class="icon" src="~/static/linkedin.png"/></a>
+  					<a  target="_new" href="https://www.facebook.com/profile.php?id=100008930282377"><img class="icon" src="~/static/facebook.png"/></a>
+          </div>
 				</div>
 			</div>
 		</div>
@@ -153,9 +161,18 @@
     background:#00daff73;
 }
 .wrapper .box  div{
-	display: table-cell;
-	vertical-align: middle;
+  padding-top: 2%;
 	width: 100%;
+}
+.table{
+  display: table;
+  width: 100%;
+  height: 100%;
+
+}
+.table-cell {
+  display: table-cell; 
+  vertical-align: middle;
 }
 .wrapper .box img{
 	max-width: 60%;
@@ -164,7 +181,7 @@
 .wrapper .box{
 	float:left;
 	width: 48%;
-	display: table;
+	display: block;
 	padding:20px;
 	background-color: rgba(255,255,255,0.9);
 	backface-visibility: 0.3;

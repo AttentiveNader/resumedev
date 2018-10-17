@@ -38,7 +38,6 @@ p{
   padding :2px ;
 }
 a{
-  text-decoration: none;
   color : black ;
   font-weight: bolder;
 }

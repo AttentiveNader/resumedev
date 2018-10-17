@@ -69,7 +69,6 @@ export default {
 	}
 	.skills-cont{
 		display: flow-root;
-		border-radius: 12px;
 		width: 100%;
 		margin:0 auto;
 		max-width: 600px;
